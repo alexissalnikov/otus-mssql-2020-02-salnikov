@@ -1,10 +1,10 @@
---1. Âñå òîâàðû, â êîòîðûõ â íàçâàíèå åñòü ïîìåòêà urgent èëè íàçâàíèå íà÷èíàåòñÿ ñ Animal
+ï»¿--1. Ð’ÑÐµ Ñ‚Ð¾Ð²Ð°Ñ€Ñ‹, Ð² ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ñ… Ð² Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐµÑÑ‚ÑŒ Ð¿Ð¾Ð¼ÐµÑ‚ÐºÐ° urgent Ð¸Ð»Ð¸ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð½Ð°Ñ‡Ð¸Ð½Ð°ÐµÑ‚ÑÑ Ñ Animal
 SELECT [StockItemID]
       ,[StockItemName]
   FROM [Warehouse].[StockItems]
   WHERE StockItemName like 'Animal%' or StockItemName like '%urgent%';
 
---2. Ïîñòàâùèêîâ, ó êîòîðûõ íå áûëî ñäåëàíî íè îäíîãî çàêàçà (ïîòîì ïîêàæåì êàê ýòî äåëàòü ÷åðåç ïîäçàïðîñ, ñåé÷àñ ñäåëàéòå ÷åðåç JOIN)
+--2. ÐŸÐ¾ÑÑ‚Ð°Ð²Ñ‰Ð¸ÐºÐ¾Ð², Ñƒ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ñ… Ð½Ðµ Ð±Ñ‹Ð»Ð¾ ÑÐ´ÐµÐ»Ð°Ð½Ð¾ Ð½Ð¸ Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ð·Ð°ÐºÐ°Ð·Ð° (Ð¿Ð¾Ñ‚Ð¾Ð¼ Ð¿Ð¾ÐºÐ°Ð¶ÐµÐ¼ ÐºÐ°Ðº ÑÑ‚Ð¾ Ð´ÐµÐ»Ð°Ñ‚ÑŒ Ñ‡ÐµÑ€ÐµÐ· Ð¿Ð¾Ð´Ð·Ð°Ð¿Ñ€Ð¾Ñ, ÑÐµÐ¹Ñ‡Ð°Ñ ÑÐ´ÐµÐ»Ð°Ð¹Ñ‚Ðµ Ñ‡ÐµÑ€ÐµÐ· JOIN)
 SELECT s.[SupplierID]
       ,s.[SupplierName]
   FROM [Purchasing].[Suppliers] s
@@ -12,8 +12,8 @@ SELECT s.[SupplierID]
   ON s.SupplierID = st.SupplierID
   WHERE st.SupplierID IS NULL;
 
---3. Ïðîäàæè ñ íàçâàíèåì ìåñÿöà, â êîòîðîì áûëà ïðîäàæà, íîìåðîì êâàðòàëà, ê êîòîðîìó îòíîñèòñÿ ïðîäàæà,
---âêëþ÷èòå òàêæå ê êàêîé òðåòè ãîäà îòíîñèòñÿ äàòà - êàæäàÿ òðåòü ïî 4 ìåñÿöà, äàòà çàáîðà çàêàçà äîëæíà áûòü çàäàíà, ñ öåíîé òîâàðà áîëåå 100$ ëèáî êîëè÷åñòâî åäèíèö òîâàðà áîëåå 20.
+--3. ÐŸÑ€Ð¾Ð´Ð°Ð¶Ð¸ Ñ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸ÐµÐ¼ Ð¼ÐµÑÑÑ†Ð°, Ð² ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼ Ð±Ñ‹Ð»Ð° Ð¿Ñ€Ð¾Ð´Ð°Ð¶Ð°, Ð½Ð¾Ð¼ÐµÑ€Ð¾Ð¼ ÐºÐ²Ð°Ñ€Ñ‚Ð°Ð»Ð°, Ðº ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼Ñƒ Ð¾Ñ‚Ð½Ð¾ÑÐ¸Ñ‚ÑÑ Ð¿Ñ€Ð¾Ð´Ð°Ð¶Ð°, Ð²ÐºÐ»ÑŽÑ‡Ð¸Ñ‚Ðµ Ñ‚Ð°ÐºÐ¶Ðµ Ðº ÐºÐ°ÐºÐ¾Ð¹ Ñ‚Ñ€ÐµÑ‚Ð¸ Ð³Ð¾Ð´Ð° Ð¾Ñ‚Ð½Ð¾ÑÐ¸Ñ‚ÑÑ Ð´Ð°Ñ‚Ð° - ÐºÐ°Ð¶Ð´Ð°Ñ Ñ‚Ñ€ÐµÑ‚ÑŒ Ð¿Ð¾ 4 Ð¼ÐµÑÑÑ†Ð°,
+-- Ð´Ð°Ñ‚Ð° Ð·Ð°Ð±Ð¾Ñ€Ð° Ð·Ð°ÐºÐ°Ð·Ð° Ð´Ð¾Ð»Ð¶Ð½Ð° Ð±Ñ‹Ñ‚ÑŒ Ð·Ð°Ð´Ð°Ð½Ð°, Ñ Ñ†ÐµÐ½Ð¾Ð¹ Ñ‚Ð¾Ð²Ð°Ñ€Ð° Ð±Ð¾Ð»ÐµÐµ 100$ Ð»Ð¸Ð±Ð¾ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐµÐ´Ð¸Ð½Ð¸Ñ† Ñ‚Ð¾Ð²Ð°Ñ€Ð° Ð±Ð¾Ð»ÐµÐµ 20.
   SELECT
      o.OrderID
 	,o.OrderDate
@@ -23,7 +23,7 @@ SELECT s.[SupplierID]
   FROM [Sales].[Orders] o
   INNER JOIN [Sales].[OrderLines] ol on ol.OrderID = o.OrderID and (ol.Quantity > 20 or ol.UnitPrice > 100) and o.[PickingCompletedWhen] is not null
    
---Äîáàâüòå âàðèàíò ýòîãî çàïðîñà ñ ïîñòðàíè÷íîé âûáîðêîé ïðîïóñòèâ ïåðâóþ 1000 è îòîáðàçèâ ñëåäóþùèå 100 çàïèñåé. Ñîðèòðîâêà äîëæíà áûòü ïî íîìåðó êâàðòàëà, òðåòè ãîäà, äàòå ïðîäàæè.
+-- Ð”Ð¾Ð±Ð°Ð²ÑŒÑ‚Ðµ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚ ÑÑ‚Ð¾Ð³Ð¾ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° Ñ Ð¿Ð¾ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ‡Ð½Ð¾Ð¹ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¾Ð¹ Ð¿Ñ€Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð² Ð¿ÐµÑ€Ð²ÑƒÑŽ 1000 Ð¸ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð·Ð¸Ð² ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ 100 Ð·Ð°Ð¿Ð¸ÑÐµÐ¹. Ð¡Ð¾Ñ€Ð¸Ñ‚Ñ€Ð¾Ð²ÐºÐ° Ð´Ð¾Ð»Ð¶Ð½Ð° Ð±Ñ‹Ñ‚ÑŒ Ð¿Ð¾ Ð½Ð¾Ð¼ÐµÑ€Ñƒ ÐºÐ²Ð°Ñ€Ñ‚Ð°Ð»Ð°, Ñ‚Ñ€ÐµÑ‚Ð¸ Ð³Ð¾Ð´Ð°, Ð´Ð°Ñ‚Ðµ Ð¿Ñ€Ð¾Ð´Ð°Ð¶Ð¸.
   SELECT
      o.OrderID
 	,o.OrderDate
@@ -35,17 +35,17 @@ SELECT s.[SupplierID]
   ORDER BY (MONTH(o.OrderDate) + 2) / 3, (MONTH(o.OrderDate) + 3) / 4, o.OrderDate
   OFFSET 1000 ROWS FETCH NEXT 100 ROWS ONLY
 
---4. Çàêàçû ïîñòàâùèêàì, êîòîðûå áûëè èñïîëíåíû çà 2014é ãîä ñ äîñòàâêîé Road Freight èëè Post, äîáàâüòå íàçâàíèå ïîñòàâùèêà, èìÿ êîíòàêòíîãî ëèöà ïðèíèìàâøåãî çàêàç
+--4. Ð—Ð°ÐºÐ°Ð·Ñ‹ Ð¿Ð¾ÑÑ‚Ð°Ð²Ñ‰Ð¸ÐºÐ°Ð¼, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð¸ÑÐ¿Ð¾Ð»Ð½ÐµÐ½Ñ‹ Ð·Ð° 2014Ð¹ Ð³Ð¾Ð´ Ñ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¾Ð¹ Road Freight Ð¸Ð»Ð¸ Post, Ð´Ð¾Ð±Ð°Ð²ÑŒÑ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¿Ð¾ÑÑ‚Ð°Ð²Ñ‰Ð¸ÐºÐ°, Ð¸Ð¼Â¤ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð½Ð¾Ð³Ð¾ Ð»Ð¸Ñ†Ð° Ð¿Ñ€Ð¸Ð½Ð¸Ð¼Ð°Ð²ÑˆÐµÐ³Ð¾ Ð·Ð°ÐºÐ°Ð·
 SELECT distinct po.PurchaseOrderID, s.SupplierName, p.FullName
   FROM [WideWorldImporters].[Purchasing].[PurchaseOrders] po
   INNER JOIN [Application].[DeliveryMethods] dm on po.DeliveryMethodID = dm.DeliveryMethodID and dm.DeliveryMethodName in ('Road Freight','Post')
   INNER JOIN [Purchasing].[Suppliers] s on po.SupplierID = s.SupplierID
   INNER JOIN [Application].[People] p on po.ContactPersonID = p.PersonID
   INNER JOIN [Warehouse].[StockItemTransactions] sit on sit.PurchaseOrderID = po.PurchaseOrderID
-  --WHERE po.ExpectedDeliveryDate between '20140101' and '20141231' ----â ïðåäïîëîæåíèè, ÷òî çàêàç "èñïîëíåí", åñëè îæèäàåìàÿ äàòà â äèàïàçîíå äàò
-  WHERE sit.TransactionOccurredWhen > '20140101' and sit.TransactionOccurredWhen < '20150101'  --â ïðåäïîëîæåíèè, ÷òî çàêàç "èñïîëíåí", åñëè ïîñòóïèë íà ñêëàä
+  --WHERE po.ExpectedDeliveryDate between '20140101' and '20141231' ----Ð² Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¸, Ñ‡Ñ‚Ð¾ Ð·Ð°ÐºÐ°Ð· "Ð¸ÑÐ¿Ð¾Ð»Ð½ÐµÐ½", ÐµÑÐ»Ð¸ Ð¾Ð¶Ð¸Ð´Ð°ÐµÐ¼Ð°Â¤ Ð´Ð°Ñ‚Ð° Ð² Ð´Ð¸Ð°Ð¿Ð°Ð·Ð¾Ð½Ðµ Ð´Ð°Ñ‚
+  WHERE sit.TransactionOccurredWhen > '20140101' and sit.TransactionOccurredWhen < '20150101'  --Ð² Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¸, Ñ‡Ñ‚Ð¾ Ð·Ð°ÐºÐ°Ð· "Ð¸ÑÐ¿Ð¾Ð»Ð½ÐµÐ½", ÐµÑÐ»Ð¸ Ð¿Ð¾ÑÑ‚ÑƒÐ¿Ð¸Ð» Ð½Ð° ÑÐºÐ»Ð°Ð´
 
---5. 10 ïîñëåäíèõ ïî äàòå ïðîäàæ ñ èìåíåì êëèåíòà è èìåíåì ñîòðóäíèêà, êîòîðûé îôîðìèë çàêàç.
+--5. 10 Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ñ… Ð¿Ð¾ Ð´Ð°Ñ‚Ðµ Ð¿Ñ€Ð¾Ð´Ð°Ð¶ Ñ Ð¸Ð¼ÐµÐ½ÐµÐ¼ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð° Ð¸ Ð¸Ð¼ÐµÐ½ÐµÐ¼ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð¾Ñ„Ð¾Ñ€Ð¼Ð¸Ð» Ð·Ð°ÐºÐ°Ð·.
 SELECT TOP(10)
     o.OrderID
    ,o.OrderDate
@@ -54,9 +54,9 @@ SELECT TOP(10)
   FROM [Sales].[Orders] o
   INNER JOIN [Application].[People] pemp on o.SalespersonPersonID = pemp.PersonID
   INNER JOIN [Application].[People] pcust on o.ContactPersonID = pcust.PersonID
-  ORDER BY o.OrderDate DESC  --âîçìîæíî ñòîèò äîáàâèòü LastEditedWhen
+  ORDER BY o.OrderDate DESC  --Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ ÑÑ‚Ð¾Ð¸Ñ‚ Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ LastEditedWhen
 
---6. Âñå èä è èìåíà êëèåíòîâ è èõ êîíòàêòíûå òåëåôîíû, êîòîðûå ïîêóïàëè òîâàð Chocolate frogs 250g
+--6. Ð’ÑÐµ Ð¸Ð´ Ð¸ Ð¸Ð¼ÐµÐ½Ð° ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð¾Ð² Ð¸ Ð¸Ñ… ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð½Ñ‹Ðµ Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½Ñ‹, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð¿Ð¾ÐºÑƒÐ¿Ð°Ð»Ð¸ Ñ‚Ð¾Ð²Ð°Ñ€ Chocolate frogs 250g
 SELECT distinct
     pcust.PersonID
    ,pcust.FullName
