@@ -42,7 +42,7 @@ SELECT distinct po.PurchaseOrderID, s.SupplierName, p.FullName
   INNER JOIN [Purchasing].[Suppliers] s on po.SupplierID = s.SupplierID
   INNER JOIN [Application].[People] p on po.ContactPersonID = p.PersonID
   INNER JOIN [Warehouse].[StockItemTransactions] sit on sit.PurchaseOrderID = po.PurchaseOrderID
-  --WHERE po.ExpectedDeliveryDate between '20140101' and '20141231' ----в предположении, что заказ "исполнен", если ожидаема¤ дата в диапазоне дат
+  --WHERE po.ExpectedDeliveryDate between '20140101' and '20141231' ----в предположении, что заказ "исполнен", если ожидаемая дата в диапазоне дат
   WHERE sit.TransactionOccurredWhen > '20140101' and sit.TransactionOccurredWhen < '20150101'  --в предположении, что заказ "исполнен", если поступил на склад
 
 --5. 10 последних по дате продаж с именем клиента и именем сотрудника, который оформил заказ.
@@ -65,4 +65,14 @@ SELECT distinct
   INNER JOIN [Sales].[Orders] o on ol.OrderID = o.OrderID
   INNER JOIN [Application].[People] pcust on o.ContactPersonID = pcust.PersonID
   WHERE ol.Description = 'Chocolate frogs 250g'
-  
+ 
+ --Более корректный запрос, поскольку в [Sales].[OrderLines] может быть что угодно, а важно наименование складской позиции [StockItemName] из [Warehouse].[StockItems]
+ SELECT distinct
+    pcust.PersonID
+   ,pcust.FullName
+   ,pcust.PhoneNumber
+  FROM  [Warehouse].[StockItems] si
+  INNER JOIN [Sales].[OrderLines] ol on si.StockItemID = ol.StockItemID
+  INNER JOIN [Sales].[Orders] o on ol.OrderID = o.OrderID
+  INNER JOIN [Application].[People] pcust on o.ContactPersonID = pcust.PersonID
+  WHERE si.StockItemName = 'Chocolate frogs 250g'
